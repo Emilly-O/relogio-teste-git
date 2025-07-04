@@ -85,3 +85,30 @@ body {
     color: #fff;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
+.stopwatch {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#stopwatchDisplay {
+    font-size: 1.8em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+button {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}

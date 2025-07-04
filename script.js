@@ -25,3 +25,47 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock(); // Inicializa imediatamente
+
+// Cronômetro
+let stopwatchInterval;
+let seconds = 0, minutes = 0, hours = 0;
+let isRunning = false;
+
+const stopwatchDisplay = document.getElementById('stopwatchDisplay');
+const startStopBtn = document.getElementById('startStopBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+function updateStopwatch() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+    }
+    if (minutes >= 60) {
+        minutes = 0;
+        hours++;
+    }
+    stopwatchDisplay.textContent = 
+        `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+startStopBtn.addEventListener('click', () => {
+    if (isRunning) {
+        clearInterval(stopwatchInterval);
+        startStopBtn.textContent = 'Iniciar';
+    } else {
+        stopwatchInterval = setInterval(updateStopwatch, 1000);
+        startStopBtn.textContent = 'Parar';
+    }
+    isRunning = !isRunning;
+});
+
+resetBtn.addEventListener('click', () => {
+    clearInterval(stopwatchInterval);
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+    stopwatchDisplay.textContent = '00:00:00';
+    startStopBtn.textContent = 'Iniciar';
+    isRunning = false;
+});
